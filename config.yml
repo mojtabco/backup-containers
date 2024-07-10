@@ -1,0 +1,33 @@
+backups:
+  # If "BACKUP PATH MAIN" values are empty, the default path will be $(pwd)/backups
+  # Warning
+  # If DELETE values are set to true, all files and directories of the "BACKUP_PATH_MAIN" path will be deleted.
+  BACKUP_PATH_MAIN: /mnt/drive
+  BACKUP_COMPRESS: true
+  DELETE: true
+  FORCE: true
+  steps:
+  # container_state = The state of the container at the time of the backup stop,pause
+  # container_state works when the VOLUME is in "yes" mode
+    - step:
+        container_name: mysql-server
+        container_state: pause
+        environment:
+          INSPECT: yes
+          IMAGE: no
+          VOLUME: yes
+    - step:
+        container_name: zabbix-server-mysql
+        container_state: pause
+        environment:
+          INSPECT: yes
+          IMAGE: no
+          VOLUME: yes
+    - step:
+        container_name: mynginx
+        container_state: stop
+        environment:
+          INSPECT: yes
+          IMAGE: yes
+          VOLUME: yes
+restore:
