@@ -52,34 +52,63 @@ Steps Section
 -   IMAGE: Saves the Docker image of a specified container.
 -   VOLUME: Collects and saves volume details of a specified container.
 
-Example YAML Configuration 
+Example YAML Configuration
+
 backups:
+
   BACKUP_PATH_MAIN: /mnt/drive
+  
   BACKUP_COMPRESS: true
+  
   DELETE: true
+  
   FORCE: true
+  
   steps:
+  
     - step:
+    
         container_name: mysql-server
+        
         container_state: pause
+        
         environment:
+        
           INSPECT: yes
+          
           IMAGE: no
+          
           VOLUME: yes
+          
     - step:
+    
         container_name: zabbix-server-mysql
+        
         container_state: pause
+        
         environment:
+        
           INSPECT: yes
+          
           IMAGE: no
+          
           VOLUME: yes
+          
     - step:
+    
         container_name: mynginx
+        
         container_state: stop
+        
         environment:
+        
           INSPECT: yes
+          
           IMAGE: yes
+          
           VOLUME: yes
+          
 
 Developer: This script was developed by Mojtabco. For assistance or suggestions, please contact him or create an issue in the GitHub repository.
+
 For access to the source code and reporting issues, visit the GitHub Repository: https://github.com/mojtabco/backup-containers
