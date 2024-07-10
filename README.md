@@ -29,7 +29,9 @@ This Bash script is designed to automate the backup process for Docker container
 ### Installation
 
 Ensure all dependencies (jq, yq, pv) are installed on your system. Install them using the following commands:
-
+- $ sudo apt install jq
+- $ sudo apt install yq
+- $ sudo apt install pv
 
 Save the script in a directory of your choice. Create a YAML configuration file (e.g., `config.yml`) following the format provided in the script comments or documentation.
 
