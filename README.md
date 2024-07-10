@@ -17,8 +17,8 @@ Features
 - Customizable via YAML: Configuration file allows customization of backup paths, deletion of old backups, and other parameters
 
 Requirements
-- jq: For parsing YAML configuration files.
-- yq: Alternative to jq for YAML processing.
+- jq: is a lightweight and flexible command-line JSON processor.
+- yq: yq is a lightweight command-line YAML File processor
 - pv: To monitor progress during backup operations.
 
 Installation
