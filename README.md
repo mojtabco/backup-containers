@@ -29,21 +29,25 @@ This Bash script is designed to automate the backup process for Docker container
 ### Installation
 
 Ensure all dependencies (jq, yq, pv) are installed on your system. Install them using the following commands:
-- $ sudo apt install jq
-- $ sudo apt install yq
-- $ sudo apt install pv
-
+```bash
+$ sudo apt install jq
+$ sudo apt install yq
+$ sudo apt install pv
+```
 Save the script in a directory of your choice. Create a YAML configuration file (e.g., `config.yml`) following the format provided in the script comments or documentation.
 
 ### Usage
 
 Set executable permissions for the `.sh` script files by running the following command in the directory containing your `.sh` scripts:
-
-- $ chmod +x *.sh
+```bash
+$ chmod +x *.sh
+```
 
 The script expects a YAML file as input, which contains configurations for the backup process, including paths, whether to compress backups, and specific steps for each container (such as whether to inspect data, backup images, or volumes). Run the script with the path to your YAML configuration file as an argument:
 
-- $ ./backup-containers.sh config.yml
+```bash
+$ ./backup-containers.sh config.yml
+```
 
 
 ### Configuration
@@ -70,7 +74,35 @@ Each entry under `steps` defines the actions to be taken for a specific Docker c
 - **VOLUME:** Collects and saves volume details of a specified container.
 
 ### Example YAML Configuration
-
+```yaml
+backups:
+  BACKUP_PATH_MAIN: /mnt/drive
+  BACKUP_COMPRESS: true
+  DELETE: false
+  FORCE: true
+  steps:
+    - step:
+        container_name: mysql-server
+        container_state: pause
+        environment:
+          INSPECT: yes
+          IMAGE: no
+          VOLUME: yes
+    - step:
+        container_name: zabbix-server-mysql
+        container_state: pause
+        environment:
+          INSPECT: yes
+          IMAGE: no
+          VOLUME: yes
+    - step:
+        container_name: mynginx
+        container_state: stop
+        environment:
+          INSPECT: yes
+          IMAGE: yes
+          VOLUME: yes
+```
 
 ### Developer
 
