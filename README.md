@@ -52,7 +52,7 @@ Steps Section
 -   IMAGE: Saves the Docker image of a specified container.
 -   VOLUME: Collects and saves volume details of a specified container.
 
-Example YAML Configuration
+Example YAML Configuration 
 backups:
   BACKUP_PATH_MAIN: /mnt/drive
   BACKUP_COMPRESS: true
